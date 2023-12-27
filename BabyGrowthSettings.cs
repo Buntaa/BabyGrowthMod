@@ -1,9 +1,6 @@
 ﻿using MCM.Abstractions.Attributes;
 using MCM.Abstractions.Attributes.v2;
 using MCM.Abstractions.Base.Global;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BabyGrowthMod
 {
