@@ -1,7 +1,4 @@
 ﻿using MCM.Abstractions.Base.Global;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;

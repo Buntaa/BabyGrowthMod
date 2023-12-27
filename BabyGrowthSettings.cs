@@ -24,7 +24,7 @@ namespace BabyGrowthMod
 
         
 
-        public override string Id => "BabyGrowthMod_v1.0.4";
+        public override string Id => "BabyGrowthMod_v1.1.7";
 
         public override string DisplayName => "Baby Growth Mod";
 
