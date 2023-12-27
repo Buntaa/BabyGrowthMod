@@ -18,4 +18,4 @@ There are a few rules to contributing:
 
 
 ## Issues
-When reporting a crash related issue the crash link (e.g: [https://report.butr.link/47B2A8]) is **REQUIRED**. 
+When reporting a crash related issue the crash link (e.g: https://report.butr.link/47B2A8) is **REQUIRED**. 
