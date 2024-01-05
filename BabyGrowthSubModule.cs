@@ -1,7 +1,7 @@
-﻿
-using MCM.Abstractions.Base.Global;
+﻿using MCM.Abstractions.Base.Global;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
+using TaleWorlds.GauntletUI.Data;
 using TaleWorlds.MountAndBlade;
 
 namespace BabyGrowthMod
@@ -88,25 +88,31 @@ namespace BabyGrowthMod
         // simple inheritence system (FOR NOW)
         private void Inheritence()
         {
-            // if player is male
             foreach(Hero hero in Hero.AllAliveHeroes)
             {
-                if (hero.Clan == Hero.MainHero.Clan && hero.Father == Hero.MainHero && hero.Father.IsDead)
+                // if player is male
+                if (hero.Clan == Hero.MainHero.Clan && hero.Age > 18 && hero.Father == Hero.MainHero && hero.Father.IsDead)
                 {
                     int main_hero_gold = hero.Father.Gold;
                     hero.ChangeHeroGold(main_hero_gold);
                 }
-            }
 
-            // if player is female
-            foreach (Hero hero in Hero.AllAliveHeroes)
-            {
-                if (hero.Clan == Hero.MainHero.Clan && hero.Mother == Hero.MainHero && hero.Mother.IsDead)
+
+                // if player is female 
+                if (hero.Clan == Hero.MainHero.Clan && hero.Age > 18 && hero.Mother == Hero.MainHero && hero.Mother.IsDead)
                 {
                     int main_hero_gold = hero.Mother.Gold;
                     hero.ChangeHeroGold(main_hero_gold);
                 }
-            }
+            }  
+        }
+
+
+        // IDEA: On main hero death all traits from the main hero get transfered to the next selected hero
+        private void InheritTraits()
+        {
+            int trait_xp = 100;
+            
         }
     }
 }
