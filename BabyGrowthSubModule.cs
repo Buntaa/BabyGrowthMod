@@ -1,6 +1,10 @@
-﻿using MCM.Abstractions.Base.Global;
+﻿using MCM.Abstractions;
+using MCM.Abstractions.Base.Global;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Conversation.Tags;
+using TaleWorlds.CampaignSystem.ViewModelCollection.Encyclopedia.List;
 using TaleWorlds.Core;
+using TaleWorlds.Library;
 using TaleWorlds.MountAndBlade;
 
 namespace BabyGrowthMod
@@ -26,6 +30,11 @@ namespace BabyGrowthMod
             else
             {
                 ApplyGrowthRatesToAllChildren();
+            }
+
+            if (GlobalSettings<BabyGrowthSettings>.Instance.AffectEveryone)
+            {
+                ApplyGrowthRateToEveryone();
             }
 
             if (GlobalSettings<BabyGrowthSettings>.Instance.SuperSpeed)
@@ -61,6 +70,18 @@ namespace BabyGrowthMod
             foreach (Hero hero in Hero.AllAliveHeroes)
             {
                 if (hero.IsChild && hero.Age < (float)Campaign.Current.Models.AgeModel.HeroComesOfAge)
+                {
+                    hero.SetBirthDay(hero.BirthDay - CampaignTime.Days(newGrowthRate - 1f));
+                }
+            }
+        }
+
+        private void ApplyGrowthRateToEveryone()
+        {
+            float newGrowthRate = GlobalSettings<BabyGrowthSettings>.Instance.NewGrowthRate;
+            foreach (Hero hero in Hero.AllAliveHeroes)
+            {
+                if (hero.IsAlive && hero.Age > 18)
                 {
                     hero.SetBirthDay(hero.BirthDay - CampaignTime.Days(newGrowthRate - 1f));
                 }

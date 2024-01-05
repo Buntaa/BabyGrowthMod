@@ -17,11 +17,16 @@ namespace BabyGrowthMod
 
         [SettingPropertyBool("Super Speed", Order = 2, RequireRestart = false, HintText ="When enabled, the mod will make your children grow SUPER fast. Good for people who wanna do quick runs or for fun.")]
         [SettingPropertyGroup("Baby Growth Settings")]
+
         public bool SuperSpeed { get; set; } = false;
 
-        
+        [SettingPropertyBool("Affect Everyone", Order = 3, RequireRestart = false, HintText = "WARNING: This setting applied with super speed will most likely kill off everyone really fast. USE AT YOUR OWN RISK. [Setting suggested by nexus user: ProlificGamer60]")]
+        [SettingPropertyGroup("Baby Growth Settings")]
 
-        public override string Id => "BabyGrowthMod_v1.1.7";
+        public bool AffectEveryone { get; set; } = false;
+
+
+        public override string Id => "BabyGrowthMod_v1.0.7";
 
         public override string DisplayName => "Baby Growth Mod";
 
