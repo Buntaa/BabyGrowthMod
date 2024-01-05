@@ -11,6 +11,8 @@ feel free to create an issue or submit a pull request.
 
 There are a few rules to contributing:
 
+- First create your own fork.
+
 * Please give a description/summary of the changes you introduced.
 
 - Any code you contribute should have a comment; "Introduced by: username here"
@@ -18,4 +20,4 @@ There are a few rules to contributing:
 
 
 ## Issues
-When reporting a crash related issue the crash link (e.g: https://report.butr.link/47B2A8) is **REQUIRED**. 
+When reporting a crash related issue the crash link (ex: https://report.butr.link/47B2A8) is **REQUIRED**. 
