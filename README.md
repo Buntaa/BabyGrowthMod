@@ -1,3 +1,6 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/buntaa/babygrowthmod/badge)](https://www.codefactor.io/repository/github/buntaa/babygrowthmod)
+
+
 # Baby Growth Mod
 
 This is a mod for Mount & Blade II: Bannerlord that introduces a dynamic growth system
