@@ -135,7 +135,7 @@ namespace BabyGrowthMod
                     foreach (TraitObject trait_object in main_hero_traits)
                     {
                         Random random = new Random();
-                        int random_trait_level = random.Next(0, 20);
+                        int random_trait_level = random.Next(1, 20);
                         nextHero.SetTraitLevel(trait_object, random_trait_level);
                     }
                 }
