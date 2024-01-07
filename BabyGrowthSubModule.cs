@@ -1,5 +1,9 @@
 ﻿using MCM.Abstractions.Base.Global;
+using System;
+using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.CharacterDevelopment;
+using TaleWorlds.CampaignSystem.ComponentInterfaces;
 using TaleWorlds.Core;
 using TaleWorlds.GauntletUI.Data;
 using TaleWorlds.MountAndBlade;
@@ -44,6 +48,14 @@ namespace BabyGrowthMod
                         hero.SetBirthDay(hero.BirthDay - CampaignTime.Days(newGrowthRate * 100));
                     }
                 }
+            }
+        }
+
+        private void OnDeath()
+        {
+            if (Hero.MainHero.IsDead)
+            {
+                throw new NotImplementedException();
             }
         }
 
@@ -111,8 +123,39 @@ namespace BabyGrowthMod
         // IDEA: On main hero death all traits from the main hero get transfered to the next selected hero
         private void InheritTraits()
         {
-            int trait_xp = 100;
-            
+            Hero mh = Hero.MainHero;
+
+            if (mh.IsDead)
+            {
+                Hero nextHero = null; 
+                foreach (Hero hero in Hero.AllAliveHeroes)
+                {
+                    if (hero.IsPlayerCompanion)
+                    {
+                        nextHero = hero;
+                        break;
+                    }
+                }
+                if (nextHero != null)
+                {
+                    IEnumerable<TraitObject> main_hero_traits = (IEnumerable<TraitObject>)mh.GetHeroTraits();
+
+                    foreach (TraitObject trait_object in main_hero_traits)
+                    {
+                        Random random = new Random();
+                        int random_trait_level = random.Next(0, 20);
+                        nextHero.SetTraitLevel(trait_object, random_trait_level);
+                    }
+                }
+            }
+        }
+
+        
+
+        // Same ideas as inheriting traits but with skills. 
+        private void InheritSkills()
+        {
+            throw new NotImplementedException();
         }
     }
 }
