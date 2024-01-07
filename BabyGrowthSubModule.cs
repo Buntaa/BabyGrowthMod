@@ -50,7 +50,6 @@ namespace BabyGrowthMod
                 }
             }
         }
-
         private void OnDeath()
         {
             if (Hero.MainHero.IsDead)
@@ -71,8 +70,6 @@ namespace BabyGrowthMod
             }
 
         }
-
-
         private void ApplyGrowthRatesToAllChildren()
         {
             float newGrowthRate = GlobalSettings<BabyGrowthSettings>.Instance.NewGrowthRate;
@@ -84,7 +81,6 @@ namespace BabyGrowthMod
                 }
             }
         }
-
         private void ApplyGrowthRateToEveryone()
         {
             float newGrowthRate = GlobalSettings<BabyGrowthSettings>.Instance.NewGrowthRate;
@@ -96,7 +92,6 @@ namespace BabyGrowthMod
                 }
             }
         }
-
         // simple inheritence system (FOR NOW)
         private void Inheritence()
         {
@@ -109,7 +104,6 @@ namespace BabyGrowthMod
                     hero.ChangeHeroGold(main_hero_gold);
                 }
 
-
                 // if player is female 
                 if (hero.Clan == Hero.MainHero.Clan && hero.Age > 18 && hero.Mother == Hero.MainHero && hero.Mother.IsDead)
                 {
@@ -118,8 +112,6 @@ namespace BabyGrowthMod
                 }
             }  
         }
-
-
         // IDEA: On main hero death all traits from the main hero get transfered to the next selected hero
         private void InheritTraits()
         {
@@ -149,9 +141,6 @@ namespace BabyGrowthMod
                 }
             }
         }
-
-        
-
         // Same ideas as inheriting traits but with skills. 
         private void InheritSkills()
         {
