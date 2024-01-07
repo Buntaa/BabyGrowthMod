@@ -119,7 +119,7 @@ namespace BabyGrowthMod
 
             if (mh.IsDead)
             {
-                Hero nextHero = null; 
+                Hero? nextHero = null; 
                 foreach (Hero hero in Hero.AllAliveHeroes)
                 {
                     if (hero.IsPlayerCompanion)
