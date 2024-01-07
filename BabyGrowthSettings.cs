@@ -10,7 +10,6 @@ namespace BabyGrowthMod
         [SettingPropertyGroup("Baby Growth Settings")]
         public float NewGrowthRate { get; set; } = 15f;
 
-
         [SettingPropertyBool("Affect Only Players Children", Order = 1, RequireRestart = false, HintText = "When enabled, the mod will only affect the growth rate of the player's children.")]
         [SettingPropertyGroup("Baby Growth Settings")]
         public bool AffectOnlyPlayersChildren { get; set; } = false;
