@@ -1,6 +1,7 @@
 ﻿using MCM.Abstractions.Base.Global;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.CharacterDevelopment;
 using TaleWorlds.CampaignSystem.ComponentInterfaces;
@@ -141,10 +142,50 @@ namespace BabyGrowthMod
                 }
             }
         }
+        private List<SkillObject> GetDefaultSkills()
+        {
+            List<SkillObject> player_skills = new List<SkillObject>();
+
+            Type type = typeof(SkillObject);
+            FieldInfo[] fields = type.GetFields(BindingFlags.Public | BindingFlags.Static);
+
+            foreach (FieldInfo field in fields)
+            {
+                if (field.FieldType == typeof(SkillObject))
+                {
+                    SkillObject skill_object = (SkillObject)field.GetValue(null);
+                    player_skills.Add(skill_object);
+                }
+            }
+            return player_skills;
+        }
         // Same ideas as inheriting traits but with skills. 
         private void InheritSkills()
         {
-            throw new NotImplementedException();
+            Hero mh = Hero.MainHero;
+            List<SkillObject> player_skills = GetDefaultSkills();
+
+            if (mh.IsDead)
+            {
+                Hero? next_hero = null;
+
+                foreach (Hero hero in Hero.AllAliveHeroes)
+                {
+                    if (hero.IsPlayerCompanion)
+                    {
+                        next_hero = hero;
+                        break;
+                    }
+                }
+                if (next_hero != null)
+                {
+                    foreach (SkillObject skill_object in player_skills)
+                    {
+                        int skill_value = mh.GetSkillValue(skill_object);
+                        next_hero.AddSkillXp(skill_object, skill_value);
+                    }
+                }
+            }
         }
     }
 }
