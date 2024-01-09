@@ -142,6 +142,7 @@ namespace BabyGrowthMod
                 }
             }
         }
+        // method for handling SkillObjects and puting them in a list by using reflection 
         private List<SkillObject> GetDefaultSkills()
         {
             List<SkillObject> player_skills = new List<SkillObject>();
